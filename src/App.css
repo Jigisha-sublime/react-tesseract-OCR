@@ -49,6 +49,10 @@
 .button:active {
   background: #54bedb;
 }
+.button:disabled {
+  cursor: progress;
+  background: #61dafb;
+}
 
 .fileUploaderContainer {
   overflow: hidden;
