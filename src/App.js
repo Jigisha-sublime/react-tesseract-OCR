@@ -30,7 +30,10 @@ const App = () => {
       await worker.load();
       await worker.loadLanguage('eng');
       await worker.initialize('eng');
-      const { data: { text, confidence } } = await worker.recognize(uploads[i]);
+      const { data: { text, confidence } } = await worker.recognize(uploads[i], {
+        // rectangle: { top: 310, left: 60, width: 150, height: 200 }
+      });
+      // console.log(results)
       let filePattern = /\b\w{10,10}\b/g;
       let filePatterns = text.match(filePattern);
       let filedoc = [{
@@ -45,8 +48,7 @@ const App = () => {
       setDocuments([
         ...documents,
         ...filedoc
-      ]
-      )
+      ])
       await worker.terminate();
       setLoading(false)
     }
